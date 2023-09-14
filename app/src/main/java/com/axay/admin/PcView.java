@@ -1,13 +1,17 @@
 package com.axay.admin;
 
-import static com.axay.admin.vars.listOfLaptop;
+import static com.axay.admin.vars.listOfComputer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.axay.admin.Adapter.LaptopAdapter;
+import com.axay.admin.Adapter.ComputerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,28 +27,35 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class ViewProduct extends AppCompatActivity {
+public class PcView extends AppCompatActivity {
+    ImageButton btnback;
     RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.laptop_view);
+        setContentView(R.layout.activity_pc_view);
+        btnback = findViewById(R.id.btnback);
         recyclerView = findViewById(R.id.idRVItem);
 
         getProducts();
 
-
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PcView.this, PcInsert.class);
+                startActivity(intent);
+            }
+        });
     }
-
     private void getProducts() {
 
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "http://192.168.29.224:80/product/get_product.php?type=1", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "http://192.168.29.224:80/product/get_product.php?type=2", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                listOfLaptop.clear();
+                listOfComputer.clear();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject responseObj = response.getJSONObject(i);
@@ -54,13 +65,14 @@ public class ViewProduct extends AppCompatActivity {
                         item.put("ram", responseObj.getString("ram"));
                         item.put("ssd", responseObj.getString("SSD"));
                         item.put("price", responseObj.getString("price"));
+                        item.put("color", responseObj.getString("color"));
                         item.put("image", responseObj.getString("image"));
-                        listOfLaptop.add(item);
+                        listOfComputer.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
                 }
-                setLaptopList();
+                setComputerList();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -74,13 +86,14 @@ public class ViewProduct extends AppCompatActivity {
 
     }
 
-    private void setLaptopList() {
+    private void setComputerList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
-        LaptopAdapter laptopAdapter = new LaptopAdapter(this);
-        recyclerView.setAdapter(laptopAdapter);
+        ComputerAdapter computerAdapter = new ComputerAdapter(this);
+        recyclerView.setAdapter(computerAdapter);
+
     }
 
 }

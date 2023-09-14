@@ -2,6 +2,7 @@ package com.axay.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WcInsert extends AppCompatActivity {
-    Button insert;
+    Button insert,ViewAll;
     EditText product_name,capacity,color,price,image,shop_name,star;
 
     @Override
@@ -29,6 +30,7 @@ public class WcInsert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wc_insert);
         insert = findViewById(R.id.insert);
+        ViewAll=findViewById(R.id.ViewAll);
         product_name = findViewById(R.id.product_name);
         star = findViewById(R.id.star);
         capacity = findViewById(R.id.capacity);
@@ -42,6 +44,14 @@ public class WcInsert extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "working", Toast.LENGTH_LONG).show();
                 addProduct();
+            }
+        });
+
+        ViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WcInsert.this, WcView.class);
+                startActivity(intent);
             }
         });
     }

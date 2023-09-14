@@ -2,6 +2,7 @@ package com.axay.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TvInsert extends AppCompatActivity {
-    Button insert;
+    Button insert,ViewAll;
     EditText product_name,display,os_type,price,image,sound,shop_name;
 
 
@@ -30,6 +31,7 @@ public class TvInsert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_insert);
         insert = findViewById(R.id.insert);
+        ViewAll=findViewById(R.id.ViewAll);
         product_name = findViewById(R.id.product_name);
         os_type = findViewById(R.id.os_type);
         display = findViewById(R.id.display);
@@ -43,6 +45,14 @@ public class TvInsert extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "working", Toast.LENGTH_LONG).show();
                 addProduct();
+            }
+        });
+
+        ViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TvInsert.this, TvView.class);
+                startActivity(intent);
             }
         });
     }

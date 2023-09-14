@@ -17,6 +17,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".laptop_item"
+            android:exported="false" />
+        <activity
+            android:name=".OvenView"
+            android:exported="false" />
+        <activity
+            android:name=".WcView"
+            android:exported="false" />
+        <activity
+            android:name=".AcView"
+            android:exported="false" />
+        <activity
+            android:name=".TvView"
+            android:exported="false" />
+        <activity
+            android:name=".PcView"
+            android:exported="false" />
+        <activity
             android:name=".ViewProduct"
             android:exported="false" />
         <activity
