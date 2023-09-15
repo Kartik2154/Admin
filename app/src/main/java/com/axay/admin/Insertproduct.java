@@ -1,7 +1,6 @@
 package com.axay.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import android.content.Intent;
@@ -17,14 +16,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +30,7 @@ public class Insertproduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insertproduct);
+        setContentView(R.layout.laptop_insert);
         insert = findViewById(R.id.insert);
         ViewAll=findViewById(R.id.ViewAll);
         product_name = findViewById(R.id.product_name);
@@ -57,7 +51,7 @@ public class Insertproduct extends AppCompatActivity {
         ViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Insertproduct.this, ViewProduct.class);
+                Intent intent=new Intent(Insertproduct.this, LaptopView.class);
                 startActivity(intent);
             }
         });

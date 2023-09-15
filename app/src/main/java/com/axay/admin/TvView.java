@@ -66,6 +66,7 @@ public class TvView extends AppCompatActivity {
                         item.put("price", responseObj.getString("price"));
                         item.put("image", responseObj.getString("image"));
                         item.put("sound", responseObj.getString("sound"));
+                        item.put("id", responseObj.getString("id"));
                         listOfTV.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

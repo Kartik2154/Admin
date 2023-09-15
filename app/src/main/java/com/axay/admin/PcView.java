@@ -67,6 +67,7 @@ public class PcView extends AppCompatActivity {
                         item.put("price", responseObj.getString("price"));
                         item.put("color", responseObj.getString("color"));
                         item.put("image", responseObj.getString("image"));
+                        item.put("id", responseObj.getString("id"));
                         listOfComputer.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

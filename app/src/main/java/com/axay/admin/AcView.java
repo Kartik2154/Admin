@@ -66,6 +66,7 @@ public class AcView extends AppCompatActivity {
                         item.put("capacity", responseObj.getString("capacity"));
                         item.put("price", responseObj.getString("price"));
                         item.put("image", responseObj.getString("image"));
+                        item.put("id", responseObj.getString("id"));
                         listOfAC.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

@@ -52,5 +52,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+
     </LinearLayout>
+    <Button
+        android:id="@+id/btnupdate"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="update"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="30dp" />
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="220dp" />
 </RelativeLayout>

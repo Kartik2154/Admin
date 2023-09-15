@@ -69,6 +69,7 @@ public class WcView extends AppCompatActivity {
                         item.put("color", responseObj.getString("color"));
                         item.put("price", responseObj.getString("price"));
                         item.put("image", responseObj.getString("image"));
+                        item.put("id", responseObj.getString("id"));
                         listOfWC.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

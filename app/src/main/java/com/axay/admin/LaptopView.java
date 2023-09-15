@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class ViewProduct extends AppCompatActivity {
+public class LaptopView extends AppCompatActivity {
     RecyclerView recyclerView;
 
     @Override
@@ -55,6 +55,7 @@ public class ViewProduct extends AppCompatActivity {
                         item.put("ssd", responseObj.getString("SSD"));
                         item.put("price", responseObj.getString("price"));
                         item.put("image", responseObj.getString("image"));
+                        item.put("id", responseObj.getString("id"));
                         listOfLaptop.add(item);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

@@ -55,12 +55,9 @@ public class LaptopAdapter  extends RecyclerView.Adapter<LaptopAdapter.ViewHolde
         Glide.with(context).load(listOfLaptop.get(position).get("image")).into(holder.imgProduct);
 
         holder.btnDelete.setOnClickListener(v -> {
-
-//            Log.d("Id",listOfLaptop.get(position).get("id").toString());
-//            String id = listOfLaptop.get(position).get("id").toString();
             deleteProduct(listOfLaptop.get(position).get("id").toString());
-
-
+            listOfLaptop.remove(position);
+            notifyItemRemoved(position);
         });
     }
 

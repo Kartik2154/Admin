@@ -35,7 +35,7 @@
             android:name=".PcView"
             android:exported="false" />
         <activity
-            android:name=".ViewProduct"
+            android:name=".LaptopView"
             android:exported="false" />
         <activity
             android:name=".OvenInsert"
