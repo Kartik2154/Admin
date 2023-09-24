@@ -5,6 +5,7 @@ import static com.axay.admin.vars.listOfLaptop;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.axay.admin.R;
+import com.axay.admin.UpdateRecord;
 import com.bumptech.glide.Glide;
 
 
@@ -70,6 +72,16 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ViewHo
             notifyItemRemoved(position);
         });
 
+        holder.btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdateRecord.class);
+                intent.putExtra("Data",listOfComputer.get(position));
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -81,7 +93,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
-        Button btnDelete;
+        Button btnDelete,btnupdate;
         TextView shopname,brand, ram, ssd, display, color, price;
 
         public ViewHolder(View view) {
@@ -95,6 +107,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ViewHo
             display = (TextView) view.findViewById(R.id.display);
             price = (TextView) view.findViewById(R.id.price);
             btnDelete = (Button) view.findViewById(R.id.btnDelete);
+            btnupdate = (Button) view.findViewById(R.id.btnupdate);
         }
     }
     private void deleteProduct(String id) {

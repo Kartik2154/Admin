@@ -17,6 +17,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".WcUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".OvenUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".AcUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".TvUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".pcUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".Adapter.Update"
+            android:exported="false" />
+        <activity
             android:name=".laptop_item"
             android:exported="false" />
         <activity
@@ -53,13 +71,16 @@
             android:name=".PcInsert"
             android:exported="false" />
         <activity
-            android:name=".Insertproduct"
+            android:name=".Laptop_insert"
             android:exported="false" />
         <activity
             android:name=".Homepage"
             android:exported="false" />
         <activity
             android:name=".AdminPage"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateRecord"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

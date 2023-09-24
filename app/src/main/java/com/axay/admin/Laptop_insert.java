@@ -23,7 +23,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Insertproduct extends AppCompatActivity {
+public class Laptop_insert extends AppCompatActivity {
     Button insert,ViewAll;
     EditText product_name,ram,SSD,price,image,shop_name;
 
@@ -51,7 +51,7 @@ public class Insertproduct extends AppCompatActivity {
         ViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Insertproduct.this, LaptopView.class);
+                Intent intent=new Intent(Laptop_insert.this, LaptopView.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +80,6 @@ public class Insertproduct extends AppCompatActivity {
                 params.put("price", price.getText().toString());
                 params.put("image", "");
                 params.put("shop_name", shop_name.getText().toString());
-
 
                 return params;
             }

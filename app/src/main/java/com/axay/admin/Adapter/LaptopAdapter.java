@@ -3,6 +3,7 @@ package com.axay.admin.Adapter;
 import static com.axay.admin.vars.listOfLaptop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +23,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.axay.admin.Homepage;
+import com.axay.admin.LaptopView;
 import com.axay.admin.R;
+import com.axay.admin.UpdateRecord;
 import com.bumptech.glide.Glide;
 
 import java.util.HashMap;
@@ -59,6 +64,15 @@ public class LaptopAdapter  extends RecyclerView.Adapter<LaptopAdapter.ViewHolde
             listOfLaptop.remove(position);
             notifyItemRemoved(position);
         });
+
+        holder.btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdateRecord.class);
+                intent.putExtra("Data",listOfLaptop.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -68,8 +82,9 @@ public class LaptopAdapter  extends RecyclerView.Adapter<LaptopAdapter.ViewHolde
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
-        Button btnDelete;
-        TextView shopname,brand,ram,ssd,price;
+        Button btnDelete, btnupdate;
+        TextView shopname, brand, ram, ssd, price;
+
 
         public ViewHolder(View view) {
             super(view);
@@ -80,6 +95,7 @@ public class LaptopAdapter  extends RecyclerView.Adapter<LaptopAdapter.ViewHolde
             ssd = (TextView) view.findViewById(R.id.ssd);
             price = (TextView) view.findViewById(R.id.price);
             btnDelete = (Button) view.findViewById(R.id.btnDelete);
+            btnupdate = (Button) view.findViewById(R.id.btnupdate);
         }
     }
 
@@ -88,12 +104,12 @@ public class LaptopAdapter  extends RecyclerView.Adapter<LaptopAdapter.ViewHolde
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.29.224:80/product/delete_product.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("Success",response.toString());
+                Log.d("Success", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Failed",error.getMessage().toString());
+                Log.d("Failed", error.getMessage().toString());
             }
         }) {
             @Override

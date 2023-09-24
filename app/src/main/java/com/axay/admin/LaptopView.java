@@ -6,14 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.axay.admin.Adapter.LaptopAdapter;
 
@@ -22,8 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LaptopView extends AppCompatActivity {
+    ImageButton btnback;
     RecyclerView recyclerView;
 
     @Override
@@ -32,8 +40,14 @@ public class LaptopView extends AppCompatActivity {
 
         setContentView(R.layout.laptop_view);
         recyclerView = findViewById(R.id.idRVItem);
-
         getProducts();
+
+        btnback = findViewById(R.id.btnback);
+        btnback.setOnClickListener(v -> {
+            Intent intent = new Intent(LaptopView.this, Homepage.class);
+            startActivity(intent);
+        });
+
 
 
     }
@@ -83,5 +97,7 @@ public class LaptopView extends AppCompatActivity {
         LaptopAdapter laptopAdapter = new LaptopAdapter(this);
         recyclerView.setAdapter(laptopAdapter);
     }
+
+
 
 }

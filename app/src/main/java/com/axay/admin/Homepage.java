@@ -19,7 +19,7 @@ public class Homepage extends AppCompatActivity {
         pro1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Homepage.this, Insertproduct.class);
+                Intent intent = new Intent(Homepage.this, Laptop_insert.class);
                 startActivity(intent);
             }
         });
